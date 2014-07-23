@@ -4350,26 +4350,30 @@
 				var sTmpClass, sCurrentClass, sNewClass;
 				for ( i=0, iLen=nTds.length; i<iLen; i++ )
 				{
-					/* Determine which column we're looking at */
-					iTargetCol = i % iColumns;
+                    /* Cells merge --acarvajal 07/19/14 */
+                    if (typeof nTds[i] != 'undefined')
+                    {
+                        /* Determine which column we're looking at */
+                        iTargetCol = i % iColumns;
 
-					/* What is the full list of classes now */
-					sCurrentClass = nTds[i].className;
-					/* What sorting class should be applied? */
-					sNewClass = asClasses[iTargetCol];
-					/* What would the new full list be if we did a replacement? */
-					sTmpClass = sCurrentClass.replace(reClass, sNewClass);
+                        /* What is the full list of classes now */
+                        sCurrentClass = nTds[i].className;
+                        /* What sorting class should be applied? */
+                        sNewClass = asClasses[iTargetCol];
+                        /* What would the new full list be if we did a replacement? */
+                        sTmpClass = sCurrentClass.replace(reClass, sNewClass);
 
-					if ( sTmpClass != sCurrentClass )
-					{
-						/* We changed something */
-						nTds[i].className = $.trim( sTmpClass );
-					}
-					else if ( sNewClass.length > 0 && sCurrentClass.indexOf(sNewClass) == -1 )
-					{
-						/* We need to add a class */
-						nTds[i].className = sCurrentClass + " " + sNewClass;
-					}
+                        if ( sTmpClass != sCurrentClass )
+                        {
+                            /* We changed something */
+                            nTds[i].className = $.trim( sTmpClass );
+                        }
+                        else if ( sNewClass.length > 0 && sCurrentClass.indexOf(sNewClass) == -1 )
+                        {
+                            /* We need to add a class */
+                            nTds[i].className = sCurrentClass + " " + sNewClass;
+                        }
+                    }
 				}
 			}
 		}
