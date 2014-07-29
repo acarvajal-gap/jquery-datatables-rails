@@ -74,8 +74,7 @@ function equalClassesTable(table_name){
     var trs = getTrsArrayFromTable(table_name);
     for(var x = 1; x < trs.length; x++){
         tds_aux = splitTrtoArrayStrings(trs[x]);
-        name = tds_aux[0].replace(/\s+/g,"") + tds_aux[1];
-        name = name.replace('*',"");
+        var name = tds_aux[0].replace(/[^\w]/g, '') + tds_aux[1];
         $(trs[x]).addClass(name + "-hover");
         $(trs[x]).addClass("hightligthTR");
     }
