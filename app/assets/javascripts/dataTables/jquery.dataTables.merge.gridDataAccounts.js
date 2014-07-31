@@ -95,6 +95,12 @@ function splitTrtoArrayStrings(tr){
 /** Remove the asterisk from parents **/
 function removeAsterisk(id){
     $.each($(id+" .mergeable"), function( i, val ) {
-        $(val).text($(val).text().replace('*',""));
+        $el = $(val);
+        if($el.text().indexOf('*') > -1){
+            $el.text($el.text().replace('*',""));
+            $el.attr( "data-type", 'parent');
+        } else {
+            $el.attr( "data-type", 'provider');
+        }
     });
 }
