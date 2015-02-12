@@ -101,7 +101,7 @@ function removeAsterisk(id){
     $.each($(id+" .mergeable"), function( i, val ) {
         $el = $(val);
         if($el.text().indexOf('*') > -1){
-            $el.text($el.text().replace('*',""));
+            // $el.text($el.text().replace('*',"")); acarvajal 02/12/15
             $el.attr( "data-type", 'parent');
         } else {
             $el.attr( "data-type", 'provider');
